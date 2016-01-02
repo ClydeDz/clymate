@@ -1,6 +1,6 @@
 /* themes */
 /* wool scarf */
-/* opal traffic green theme [in-order] */
+/* opal traffic green theme [in-order] #BDECB6*/
 /* blue theme */
 /* pink */
 /* headache theme */
@@ -13,6 +13,10 @@ body {
 
 .header, .tab-header, .footer {
   background-color: #015D52; }
+
+.tab-header {
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.27);
+  /*box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14), 0px 4px 8px rgba(0, 0, 0, 0.28);*/ }
 
 .fixed {
   position: fixed;
@@ -40,7 +44,7 @@ a:hover, a:active, a:focus {
 
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:active, .navbar-default .navbar-brand:visited {
-  color: #BDECB6;
+  color: #F0FFED;
   font-size: 56px;
   font-family: PassionOne,Arial, Helvetica, sans-serif; }
 
@@ -63,7 +67,7 @@ a:hover, a:active, a:focus {
   border-color: transparent;
   transition: border-color ease-in 0.3s;
   margin: 0;
-  color: #BDECB6;
+  color: #F0FFED;
   text-transform: uppercase;
   font-weight: 500; }
 
@@ -86,8 +90,8 @@ a:hover, a:active, a:focus {
   color: white;
   background-color: transparent;
   border-width: 0px;
-  border-bottom: 8px solid #BDECB6;
-  border-color: transparent transparent #BDECB6;
+  border-bottom: 8px solid #F0FFED;
+  border-color: transparent transparent #F0FFED;
   -moz-border-top-colors: none;
   -moz-border-right-colors: none;
   -moz-border-bottom-colors: none;

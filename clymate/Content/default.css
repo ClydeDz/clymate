@@ -29,7 +29,7 @@ body {
 
 .footer {
   color: #fff;
-  font-family: PassionOne,Arial, Helvetica, sans-serif; }
+  font-family: 'PassionOne',Arial, Helvetica, sans-serif; }
 
 .footer > .container > .row > div {
   padding: 20px 10px 20px 20px; }
@@ -46,7 +46,7 @@ a:hover, a:active, a:focus {
 .navbar-default .navbar-brand:active, .navbar-default .navbar-brand:visited {
   color: #F0FFED;
   font-size: 56px;
-  font-family: PassionOne,Arial, Helvetica, sans-serif; }
+  font-family: 'PassionOne',Arial, Helvetica, sans-serif; }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
   color: #fff; }
@@ -58,7 +58,7 @@ a:hover, a:active, a:focus {
   padding: 0 0 1px 0;
   border-bottom: 0px solid;
   background-color: #015D52;
-  font-family: PassionOne,Arial, Helvetica, sans-serif; }
+  font-family: 'PassionOne',Arial, Helvetica, sans-serif; }
 
 .nav-tabs > li > a {
   border-radius: 0;

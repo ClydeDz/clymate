@@ -1,10 +1,114 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-	<meta charset="utf-8" />
+    <title>Clymate | The Weather App by Clyde D'Souza</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/default.css" rel="stylesheet" />
 </head>
 <body>
-    clymate
+    <div class="header">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <h1><a class="navbar-brand" href="#">Clymate</a></h1>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class="tab-header">
+            <div class="container">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+                    <li role="presentation"><a href="#uv" aria-controls="uv" role="tab" data-toggle="tab">UV</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="general">
+                a<a href="#profile" aria-controls="general" role="tab" data-toggle="tab" id="goToProfile" onclick="changeTab('Messages')">Messages</a>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="uv">
+                b
+                <a href="#uv" aria-controls="uv" role="tab" data-toggle="tab" id="goToProfile" onclick="changeTab('Settings')">Settings</a>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="settings">
+                dMessages
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <em><p>This thingie is also available as a ready-made jQuery plugin at <a href="https://github.com/senff/Sticky-Anything" target="_blank">https://github.com/senff/Sticky-Anything</a> and will allow you to make ANY element sticky -- not just the menu.<br><strong>Now also available as a <a href="https://wordpress.org/plugins/sticky-menu-or-anything-on-scroll/">WordPress plugin!</a></strong></em></p>
+
+        <h2>So how does this thing work?</h2>
+
+        <p>Upon page load, jQuery clones the menu <em>(= the element we want to see sticking at the top of the screen)</em>. The original menu gets class "original" and the cloned one gets class "cloned".</p>
+
+        <p>In the DOM, the cloned one is placed right after the original menu so it becomes a full sibling (twin?) of the original one. With CSS, we make sure that the cloned one is positioned properly to make it stick at the top of the screen -- but is set to <strong>display:none;</strong> so we won't see this sticky one right away.</p>
+
+        <p>Every 10ms (why? see <a href="https://medium.com/@dhg/82ced812e61c#ee02" target="_blank">these do's and don'ts</a>), <strong>stickThis()</strong> is fired and checks the scrolled position and compares it to the top coordinate of the menu. If the scrolled position is equal or higher than the menu top coordinate, it means that we've scrolled past the menu and this is when we want it to be sticky. When that is the case, we make the cloned (sticky) show, and make the original (static) one invisible.</p>
+
+        <p>Obviously, when the scrolled position is not as high as the original menu's top coordinate, it means we haven't scrolled past the menu, and in this case we'll need the "normal" situation (the cloned one doesn't show and the original one does).</p>
+
+
+        <h2>What's up with this cloning thing?</h2>
+        <p>A lot of sticky menu methods just make the original item stick at the top of the screen. That works, but the downside of this is that the menu is removed from the flow of the page. The rest of the page doesn't "see" the menu anymore so this needs to be compensated by adding padding, margin, or something to make sure that the content doesn't "jump" (see "<a href="http://codepen.io/senff/full/zfqEl" target="_blank">HERE</a> how that would happen).</p>
+
+        <p>The trick to that is to not remove the menu from the flow at all, so that the rest of the page sees it at all times - sticky or not! Always leave the menu where it is. <br> Of course, making it sticky (by assigning <strong>position:fixed</strong>) will, by definition, remove it from the flow, so we can't make this instance of the menu sticky.</p>
+
+        <p>By creating a clone, we can create <em>another</em> (identical) instance of the menu and make that one always sticky. It will always be there, but depending on the scrolled position, it will (or will not) show. When it shouldn't be visible, we can't have it "overlap" or obscure any other elements, which is why we use show/hide instead of visible/invisible (if it would just be invisible, it would technically block everything under it from user interaction).</p>
+
+        <p>SOOOOO, the <strong>original</strong> menu toggles between visible/invisible (to not mess with the positioning of the elements on the rest of the page), while the <strong>cloned</strong> menu toggles between show/hide (to not mess with the elements under it).</p>
+
+        <h2>TL;DR</h2>
+
+        <p>- Page creates a cloned copy of the menu, which will have the exact same look/feel as the original menu (because it's an identical sibling), but is sticky at the top of the page.<br>- When we DON'T need a sticky menu, the original static menu shows normally and the cloned sticky menu is set to not show.<br>- When we DO need a sticky menu, the original static menu is invisible and the cloned sticky one is set to show.</p>
+
+        <h2>Dummy content below this line.</h2>
+
+
+        <p>Bacon ipsum dolor sit amet culpa adipisicing andouille ut, salami bresaola spare ribs shank fatback cupidatat est. Occaecat beef flank fatback beef ribs. Sed tempor officia, proident ullamco elit short loin ham hock short ribs laborum pariatur. Nisi frankfurter sint, boudin aute andouille chicken corned beef. Shank pariatur pork loin deserunt et nostrud, sausage ut.</p>
+
+        <p>Qui sed elit leberkas enim prosciutto aliqua shank occaecat. Labore enim proident short loin strip steak ut. Bresaola ea sed pariatur culpa sint ham hock tri-tip shoulder. Sed jowl sunt chuck mollit jerky.</p>
+
+        <p>Ball tip ham hock pariatur dolore, minim pig qui non filet mignon. Duis dolore do pork belly aute. In consequat mollit consectetur dolore. Short ribs duis tempor, deserunt dolore pastrami pancetta do aliquip jerky sed qui spare ribs tri-tip. Qui jerky culpa eu drumstick chicken sausage brisket.</p>
+
+        <p>Bacon ipsum dolor sit amet culpa adipisicing andouille ut, salami bresaola spare ribs shank fatback cupidatat est. Occaecat beef flank fatback beef ribs. Sed tempor officia, proident ullamco elit short loin ham hock short ribs laborum pariatur. Nisi frankfurter sint, boudin aute andouille chicken corned beef. Shank pariatur pork loin deserunt et nostrud, sausage ut.</p>
+
+        <p>Qui sed elit leberkas enim prosciutto aliqua shank occaecat. Labore enim proident short loin strip steak ut. Bresaola ea sed pariatur culpa sint ham hock tri-tip shoulder. Sed jowl sunt chuck mollit jerky.</p>
+
+        <p>Ball tip ham hock pariatur dolore, minim pig qui non filet mignon. Duis dolore do pork belly aute. In consequat mollit consectetur dolore. Short ribs duis tempor, deserunt dolore pastrami pancetta do aliquip jerky sed qui spare ribs tri-tip. Qui jerky culpa eu drumstick chicken sausage brisket.</p>
+
+        <p>Bacon ipsum dolor sit amet culpa adipisicing andouille ut, salami bresaola spare ribs shank fatback cupidatat est. Occaecat beef flank fatback beef ribs. Sed tempor officia, proident ullamco elit short loin ham hock short ribs laborum pariatur. Nisi frankfurter sint, boudin aute andouille chicken corned beef. Shank pariatur pork loin deserunt et nostrud, sausage ut.</p>
+
+        <p>Qui sed elit leberkas enim prosciutto aliqua shank occaecat. Labore enim proident short loin strip steak ut. Bresaola ea sed pariatur culpa sint ham hock tri-tip shoulder. Sed jowl sunt chuck mollit jerky.</p>
+
+        <p>Ball tip ham hock pariatur dolore, minim pig qui non filet mignon. Duis dolore do pork belly aute. In consequat mollit consectetur dolore. Short ribs duis tempor, deserunt dolore pastrami pancetta do aliquip jerky sed qui spare ribs tri-tip. Qui jerky culpa eu drumstick chicken sausage brisket.</p>
+
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <p>Clymate by Clyde D'Souza</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/jquery-1.9.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script>
+    $(window).bind('scroll', function () {
+        if ($(window).scrollTop() > $('.header>.navbar').height() +10) {
+            $('.tab-header').addClass('fixed', 2000);
+        } else {
+            $('.tab-header').removeClass('fixed', 2000);
+        }
+    });
+    </script>
 </body>
 </html>

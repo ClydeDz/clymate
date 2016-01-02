@@ -1,0 +1,128 @@
+﻿@import "_master.scss";
+
+@font-face {
+    font-family: 'PassionOne';
+    src: url('../fonts/PassionOne-Regular.otf') format('opentype');
+}
+body{
+    font-size:20px;
+}
+.header,.tab-header,.footer{
+    background-color:$ascent_dark;
+}
+.fixed {
+    position:fixed;
+    top:0;
+    width:100%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.footer{
+    color:$basics_white;
+    font-family:PassionOne,Arial, Helvetica, sans-serif;
+}
+.footer>.container>.row>div{
+    padding:20px 10px 20px 20px;
+}
+/* override bootstrap */
+a:hover, a:active, a:focus {
+  outline:none;
+}
+.navbar-default{
+    background-color:$ascent_dark;
+    border-color:$ascent_dark;
+}
+.navbar-default .navbar-brand,.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:active,.navbar-default .navbar-brand:visited{
+    color:$ascent_pastel;
+    font-size:56px;
+    font-family:PassionOne,Arial, Helvetica, sans-serif;
+}
+.navbar-default .navbar-brand:hover,.navbar-default .navbar-brand:focus{
+    color:$basics_white;
+}
+/* Tab Navigation */
+.nav-tabs {
+    width:100%;
+    margin: 0;
+    padding: 0 0 1px 0;
+    border-bottom: 0px solid;  
+    background-color:$ascent_dark;
+    font-family:PassionOne,Arial, Helvetica, sans-serif;
+}
+.nav-tabs > li > a {
+    border-radius: 0;
+    border-width: 0px;
+    border-bottom:8px solid transparent;
+    border-color: transparent;
+    transition:border-color ease-in 0.3s;
+    margin:0; 
+    color:$ascent_pastel;
+    text-transform:uppercase;
+    font-weight:500;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover {
+    /*color:$basics_white;*/
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:active,.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:visited {
+    color:$basics_white;
+}
+/* Tab Content */
+.tab-pane {
+    border-radius: 0;
+    text-align: center;
+    padding: 10px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+color: white;
+background-color: transparent;
+border-width: 0px;
+border-bottom:8px solid $ascent_pastel;
+border-color: transparent transparent $ascent_pastel;
+-moz-border-top-colors: none;
+-moz-border-right-colors: none;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+border-image: none;
+cursor: pointer;
+transition:border-color ease-in 0.3s;
+}
+.nav > li > a:hover, .nav > li > a:focus{
+text-decoration: none;
+background-color: $ascent_dark;
+border-width: 0px;
+border-bottom:6px solid $ascent_dark;
+/*border-bottom-style: solid;*/
+border-color: transparent transparent $ascent_dark;
+transition:border-color ease-out 0.3s;
+color:$basics_white;
+}
+
+/* media queries to support custom css */
+@media screen and (max-width: 767px) {
+    .nav-tabs > li > a {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size:16px;
+    }
+
+    .navbar-default .navbar-brand {
+        padding: 30px 15px 50px 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .nav-tabs > li > a {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .navbar-default .navbar-brand {
+        padding: 30px 15px 50px 24px;
+    }
+}

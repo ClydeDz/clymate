@@ -116,7 +116,7 @@
     <Content Include="Content\default.scss" />
     <Content Include="fonts\PassionOne-Regular.otf" />
     <Content Include="Content\cards.scss" />
-    <Content Include="scripts\freeformatter-out.json" />
+    <Content Include="scripts\world.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

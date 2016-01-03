@@ -1,8 +1,5 @@
 ﻿//https://gist.githubusercontent.com/Keeguon/2310008/raw/bdc2ce1c1e3f28f9cab5b4393c7549f38361be4e/cities.json
 //https://raw.githubusercontent.com/mledoze/cities/master/cities.json
-var default_city = "";
-var default_lat;
-var default_long;
 
 function getLocation() {
     var flag = 0;

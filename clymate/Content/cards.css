@@ -18,8 +18,15 @@
   background-color: #fff;
   color: #015D52; }
 
-input[type=text] {
-  color: #000; }
+input[type=text]#locationTextBox {
+  color: #000;
+  max-width: 650px; }
+
+.search-box {
+  padding-right: 0; }
+
+.search-button {
+  margin-left: 0; }
 
 .ui-autocomplete {
   list-style-type: none;

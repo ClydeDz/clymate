@@ -13,10 +13,16 @@
     background-color:$basics_white;
     color:$ascent_dark;
 }
-input[type=text]{
+input[type=text]#locationTextBox{
     color:$basics_black;
+    max-width:650px;
 }
-
+.search-box{
+    padding-right:0;
+}
+.search-button{
+    margin-left:0;
+}
 .ui-autocomplete{
     list-style-type:none;
     list-style-position:initial;

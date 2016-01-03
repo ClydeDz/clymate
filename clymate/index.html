@@ -10,7 +10,7 @@
     <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
     <script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"01c92632-7729-43b5-a50d-792a08c013bf"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
 </head>
-<body onload="toGetCountries()">
+<body onload="getCitiesList()">
     <div class="header">
         <nav class="navbar navbar-default">
             <div class="container">
@@ -35,7 +35,18 @@
         <div class="tab-content">
             <!--General temperature tab--->
             <div role="tabpanel" class="tab-pane active" id="general">
-                a<a href="#profile" aria-controls="general" role="tab" data-toggle="tab" id="goToProfile" onclick="changeTab('Messages')">Messages</a>
+                    <div class="row">
+                        <div class="col-md-8 col-xs-12">
+                            <div id="temperatureMain" class="card-setting">
+                                    Auckland 30c
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <div class="card-setting">
+                                    Auckland 30c
+                            </div>
+                        </div>
+                    </div>
             </div>
             <!--UV tab--->
             <div role="tabpanel" class="tab-pane" id="uv">
@@ -48,7 +59,7 @@
                     <div class="col-xs-12 col-md-8 col-md-offset-2">
                         <div class="card-setting location-setting text-center">
                             <h2>Location settings</h2>
-                            <form role="form">
+                            <form role="form" onsubmit="return getLocation();">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="locationTextBox"/>
                                     <!--<div id="predictionTextContainer"></div>-->

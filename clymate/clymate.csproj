@@ -101,6 +101,7 @@
     <Content Include="Content\default.css">
       <DependentUpon>default.scss</DependentUpon>
     </Content>
+    <Content Include="images\clearSky.jpe" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -115,6 +116,7 @@
     <Content Include="Content\default.scss" />
     <Content Include="fonts\PassionOne-Regular.otf" />
     <Content Include="Content\cards.scss" />
+    <Content Include="scripts\freeformatter-out.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

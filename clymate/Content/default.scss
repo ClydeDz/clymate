@@ -55,6 +55,7 @@ a:hover, a:active, a:focus {
 .nav-tabs {
     width:100%;
     margin: 0;
+    margin-left:-12px;
     padding: 0 0 1px 0;
     border-bottom: 0px solid;  
     background-color:$ascent_dark;

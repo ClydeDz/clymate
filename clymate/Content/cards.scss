@@ -1,0 +1,18 @@
+﻿@import "_master.scss";
+
+.row{
+    margin-bottom:15px;
+    margin-top:15px;
+}
+.card-setting{
+    background-color:$ascent_pure;
+    color:$basics_white;
+    padding:10px;
+}
+.location-setting{
+    background-color:$basics_white;
+    color:$ascent_dark;
+}
+input[type=text]{
+    color:$basics_black;
+}

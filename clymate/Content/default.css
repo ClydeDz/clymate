@@ -11,11 +11,15 @@
 body {
   font-size: 20px; }
 
+h1, h2 {
+  font-family: 'PassionOne',Arial, Helvetica, sans-serif; }
+
 .header, .tab-header, .footer {
   background-color: #015D52; }
 
 .tab-header {
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.27);
+  z-index: 99;
   /*box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14), 0px 4px 8px rgba(0, 0, 0, 0.28);*/ }
 
 .fixed {
@@ -83,8 +87,8 @@ a:hover, a:active, a:focus {
 /* Tab Content */
 .tab-pane {
   border-radius: 0;
-  text-align: center;
-  padding: 10px; }
+  padding: 10px;
+  margin: 30px 20px 30px 20px; }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: white;

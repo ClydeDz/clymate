@@ -95,6 +95,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\cards.css">
+      <DependentUpon>cards.scss</DependentUpon>
+    </Content>
     <Content Include="Content\default.css">
       <DependentUpon>default.scss</DependentUpon>
     </Content>
@@ -107,6 +110,7 @@
     <Content Include="Content\_master.scss" />
     <Content Include="Content\default.scss" />
     <Content Include="fonts\PassionOne-Regular.otf" />
+    <Content Include="Content\cards.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

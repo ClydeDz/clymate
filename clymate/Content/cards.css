@@ -1,0 +1,24 @@
+/* themes */
+/* wool scarf */
+/* opal traffic green theme [in-order] #BDECB6*/
+/* blue theme */
+/* pink */
+/* headache theme */
+/* basics */
+.row {
+  margin-bottom: 15px;
+  margin-top: 15px; }
+
+.card-setting {
+  background-color: #308446;
+  color: #fff;
+  padding: 10px; }
+
+.location-setting {
+  background-color: #fff;
+  color: #015D52; }
+
+input[type=text] {
+  color: #000; }
+
+/*# sourceMappingURL=cards.css.map */

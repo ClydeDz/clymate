@@ -33,16 +33,12 @@ function setTemperature(data) {
     temperatureMainText += "<div class='weather-description'>" + (data.weather[0].description).toString().charAt(0).toUpperCase().concat(data.weather[0].description.toString().substr(1, data.weather[0].description.toString().length - 1)) + "</div>";
     document.getElementById('temperatureMain').innerHTML = "" + temperatureMainText;
     document.getElementById("temperatureMain").style.background = "url('../images/" + data.weather[0].main.toString().toLowerCase() + "Timeline.jpe')  no-repeat scroll center center";
-    var minmaxText = "<div>Minimum: <h2>" + data["main"].temp_min + "</h2></div><div>Maximum: <h2>" + data["main"].temp_max + "</h2></div>";
+    var minmaxText = "<div><h2>Min " + data["main"].temp_min + "</h2></div><div><h2>Max " + data["main"].temp_max + "</h2></div>";
     document.getElementById('minMax').innerHTML = "" + minmaxText;
-    var humidityText = "<div>Humidity</div>";
-    //<div><h2>" + data["main"].humidity + "%</h2></div>";
-    //document.getElementById('humidity').innerHTML = "" + humidityText;
     loadHumidityGauge(data["main"].humidity);
-
-    var windText = "<div>Wind</div><div>" + data["wind"].speed + " mph</div>";
+    var windText = "<div><h2>Wind</h2></div><div>" + data["wind"].speed + " mph</div>";
     document.getElementById('wind').innerHTML = "" + windText;
-    document.getElementById('wind').innerHTML = "" + windText;
+    $(".wind-direction>img").css("transform","rotate(" + data["wind"].deg + "deg)");
     document.getElementById('customGraphics').innerHTML = "<img src='images/" + data.weather[0].main.toString().toLowerCase() + ".png' class='img-responsive' height='150' width='150'/>";
 }
 function loadHumidityGauge(input) {

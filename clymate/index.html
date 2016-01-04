@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/c3.css" rel="stylesheet" />
     <link href="Content/default.css" rel="stylesheet" />
     <link href="Content/cards.css" rel="stylesheet" />
-    <link href="Content/c3.css" rel="stylesheet" />
     <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
     <script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"01c92632-7729-43b5-a50d-792a08c013bf"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
 </head>
@@ -43,25 +43,25 @@
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-12">
-                            <div id="customGraphics" class="card-setting">
-                                
+                            <div id="customGraphics" class="card-setting yellow-card">                                
                             </div>
                         </div>
                     </div>
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
-                        <div id="minMax" class="card-setting">
+                        <div id="minMax" class="card-setting orange-card">
                         </div>
                     </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div id="humidity" class="card-setting text-center">
-                            <div>Humidity</div>
+                    <div class="col-md-5 col-xs-12">
+                        <div id="humidity" class="card-setting text-center invisible-card">
+                            <h2>Humidity</h2>
                             <div id="humidityGauge"></div>
-                        </div>
-                        
+                        </div>                        
                     </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div id="wind" class="card-setting">
+                    <div class="col-md-3 col-xs-12">
+                        <div class="card-setting cyan-card text-center">
+                            <div id="wind"></div>
+                            <div class="wind-direction"><img src="images/winddirection.png" class="img-responsive" /></div>
                         </div>
                     </div>
                 </div>

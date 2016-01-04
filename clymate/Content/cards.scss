@@ -10,6 +10,28 @@
     padding:10px;
     margin:5px;
 }
+.yellow-card{
+    background-color:$headache_yellow;
+}
+.orange-card{
+    background-color:$headache_orange;
+}
+.ash-card{
+    background-color:$headache_ash;
+}
+.invisible-card{
+    background-color:$headache_invisible;
+    color:$headache_orange;
+}
+.cyan-card{
+    background-color:$headache_cyan;
+}
+.c3-chart-arc .c3-gauge-value{
+    fill:$headache_orange;
+    font-family:'PassionOne',Arial, Helvetica, sans-serif;
+    margin-top:-15px;
+    font-weight:700;
+}
 .location-setting{
     background-color:$basics_white;
     color:$ascent_dark;
@@ -61,8 +83,7 @@ input[type=text]#locationTextBox{
 }
 #customGraphics{
     display:block;
-    min-height:250px;
-    background-color:$ascent_pure;    
+    min-height:250px;   
 }
 #customGraphics>img{
     margin-left:auto;
@@ -77,6 +98,17 @@ input[type=text]#locationTextBox{
     left: 0;
     width: 100%;
     height: 100%;
+}
+.wind-direction>img{
+    height:70px;
+    width:50px;
+        margin-left:auto;
+    margin-right:auto;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+.wind-direction{
+
 }
 .city-name,.temperature-value{
     font-size:55px;

@@ -15,7 +15,7 @@ h1, h2 {
   font-family: 'PassionOne',Arial, Helvetica, sans-serif; }
 
 .header, .tab-header, .footer {
-  background-color: #015D52; }
+  background-color: #655643; }
 
 .tab-header {
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.27);
@@ -43,8 +43,8 @@ a:hover, a:active, a:focus {
   outline: none; }
 
 .navbar-default {
-  background-color: #015D52;
-  border-color: #015D52; }
+  background-color: #655643;
+  border-color: #655643; }
 
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:active, .navbar-default .navbar-brand:visited {
@@ -62,7 +62,7 @@ a:hover, a:active, a:focus {
   margin-left: -12px;
   padding: 0 0 1px 0;
   border-bottom: 0px solid;
-  background-color: #015D52;
+  background-color: #655643;
   font-family: 'PassionOne',Arial, Helvetica, sans-serif; }
 
 .nav-tabs > li > a {
@@ -108,11 +108,11 @@ a:hover, a:active, a:focus {
 
 .nav > li > a:hover, .nav > li > a:focus {
   text-decoration: none;
-  background-color: #015D52;
+  background-color: #655643;
   border-width: 0px;
-  border-bottom: 6px solid #015D52;
+  border-bottom: 6px solid #655643;
   /*border-bottom-style: solid;*/
-  border-color: transparent transparent #015D52;
+  border-color: transparent transparent #655643;
   transition: border-color ease-out 0.3s;
   color: #fff; }
 

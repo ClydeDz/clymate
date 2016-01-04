@@ -11,7 +11,7 @@ h1,h2{
     font-family:'PassionOne',Arial, Helvetica, sans-serif;
 }
 .header,.tab-header,.footer{
-    background-color:$ascent_dark;
+    background-color:$headache_ash;
 }
 .tab-header{
         box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.27);
@@ -39,8 +39,8 @@ a:hover, a:active, a:focus {
   outline:none;
 }
 .navbar-default{
-    background-color:$ascent_dark;
-    border-color:$ascent_dark;
+    background-color:$headache_ash;
+    border-color:$headache_ash;
 }
 .navbar-default .navbar-brand,.navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:active,.navbar-default .navbar-brand:visited{
@@ -58,7 +58,7 @@ a:hover, a:active, a:focus {
     margin-left:-12px;
     padding: 0 0 1px 0;
     border-bottom: 0px solid;  
-    background-color:$ascent_dark;
+    background-color:$headache_ash;
     font-family:'PassionOne',Arial, Helvetica, sans-serif;
 }
 .nav-tabs > li > a {
@@ -104,11 +104,11 @@ transition:border-color ease-in 0.3s;
 }
 .nav > li > a:hover, .nav > li > a:focus{
 text-decoration: none;
-background-color: $ascent_dark;
+background-color: $headache_ash;
 border-width: 0px;
-border-bottom:6px solid $ascent_dark;
+border-bottom:6px solid $headache_ash;
 /*border-bottom-style: solid;*/
-border-color: transparent transparent $ascent_dark;
+border-color: transparent transparent $headache_ash;
 transition:border-color ease-out 0.3s;
 color:$basics_white;
 }

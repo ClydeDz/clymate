@@ -95,17 +95,36 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\c3.css" />
     <Content Include="Content\cards.css">
       <DependentUpon>cards.scss</DependentUpon>
     </Content>
     <Content Include="Content\default.css">
       <DependentUpon>default.scss</DependentUpon>
     </Content>
-    <Content Include="images\clearSky.jpe" />
+    <Content Include="images\additional.png" />
+    <Content Include="images\atmosphere.png" />
+    <Content Include="images\atmosphereTimeline.jpe" />
+    <Content Include="images\clear.png" />
+    <Content Include="images\clearTimeline.jpe" />
+    <Content Include="images\clouds.png" />
+    <Content Include="images\cloudsTimeline.jpe" />
+    <Content Include="images\drizzle.png" />
+    <Content Include="images\drizzleTimeline.jpe" />
+    <Content Include="images\extreme.png" />
+    <Content Include="images\extremeTimeline.jpe" />
+    <Content Include="images\rain.png" />
+    <Content Include="images\rainTimeline.jpe" />
+    <Content Include="images\snow.png" />
+    <Content Include="images\snowTimeline.jpe" />
+    <Content Include="images\thunderstorm.png" />
+    <Content Include="images\thunderstormTimeline.jpe" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\c3.min.js" />
+    <Content Include="scripts\d3_min.js" />
     <Content Include="scripts\default.js" />
     <Content Include="scripts\jquery-ui.js" />
     <Content Include="scripts\settings.js" />

@@ -12,7 +12,11 @@
 var default_city = "New York";
 var default_lat = 40.71;
 var default_long = -74.01;
-var default_unit = "imperial";
+var default_unit = "Celsius";
+var current_city;
+var current_lat = 40.71;
+var current_long = -74.01;
+var current_unit = "Celsius";
 
 function loadClymate() {
     // load settings
@@ -20,8 +24,11 @@ function loadClymate() {
     initializeHumidityGauge();
     // look for cookies
     checkCookie("clymate-city", "clymate-latitude", "clymate-longitude");
+    $(".current-location").text("" + current_city);
+    current_unit = getCookie("clymate-units");
     // load temper
-    getTemperature(default_city,default_unit);
+    getTemperature(default_city, default_unit);
+    // load uv
 }
 
 function getTemperature(input,unit) {
@@ -124,6 +131,7 @@ function checkCookie(input,latitude,longitude) {
     var info = getCookie(input);
     if (info != "") {
         default_city = info;
+        current_city = info;
         default_lat = Number(getCookie(latitude));
         default_long = Number(getCookie(longitude));
     }
@@ -131,6 +139,7 @@ function checkCookie(input,latitude,longitude) {
         setCookie(input, default_city, 30);
         setCookie(latitude, default_lat, 30);
         setCookie(longitude, default_long, 30);
+        current_city = default_city;
     }
 }
 
@@ -141,7 +150,7 @@ var weatherModule = (function () {
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "http://api.openweathermap.org/data/2.5/weather?q=" + default_city + "&units="+default_unit+"&appid=2de143494c0b295cca9337e1e96b00e0",
+                url: "http://api.openweathermap.org/data/2.5/weather?q=" + current_city + "&units="+default_unit+"&appid=2de143494c0b295cca9337e1e96b00e0",
                 success: function (data) {
                     if (data["cod"] == 200)
                         callback(data);

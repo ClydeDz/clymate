@@ -9,10 +9,56 @@ function getLocation() {
             flag = 1;
         } 
     }
-    (flag == 0) ? $(".settings-error").text("Enter a valid city") : $(".settings-error").text("");
+    (flag == 0) ? $(".settings-error").text("Enter a valid city") : setCurrent();
     return false;
 }
 
+function setCurrent() {
+    $(".settings-error").text("");
+    current_city = $("#locationTextBox").val();
+    getTemperature(current_city, current_unit);
+    if (default_city !== current_city) {
+        $('#defaultToggle').prop('disabled', false);
+        $('#toggle').attr('disabled', false);
+    }
+}
+//onclick="toggle(this)"
+function toggle(button) {
+    if ($("#" + button).text() == "NO") {
+        $("#" + button).text("YES");
+        console.log("a");
+        $("#" + button).addClass("btn-primary");
+        // create a new default location | store new location in cookie
+        setCookie("clymate-city", current_city, 30);
+        console.log(current_city + " " + getCookie(current_city));
+        $('#defaultToggle').prop('disabled', true);
+    }
+    else {
+        console.log($("#" + button).text());
+        $("#" + button).text("NO");
+        console.log("b");
+        $("#"+button).removeClass("btn-primary");
+        $('#defaultToggle').prop('disabled', true);
+    }
+}
+/* */
+$('#defaultToggle').live('change', function () {
+    if ($(this).is(':checked')) {
+        $(this).attr('disabled', true);
+    } else {
+        alert('un-checked');
+    }
+});
+$('#unitsToggle').live('change', function () {
+    if ($(this).is(':checked')) {
+        $('#unitsToggleLabel').innerHTML("Celsius");
+        setCookie("clymate-units", "Celsius", 30);
+    } else {
+        $('#unitsToggleLabel').innerHTML("Farenheit");
+        setCookie("clymate-units", "Farenheit", 30);
+    }
+});
+/* */
 var cities = [];
 function getCitiesList() {
     $.getJSON("../scripts/world.json", function (data) {

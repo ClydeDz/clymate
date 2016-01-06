@@ -8,6 +8,7 @@
     <link href="Content/c3.css" rel="stylesheet" />
     <link href="Content/default.css" rel="stylesheet" />
     <link href="Content/cards.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
     <script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"01c92632-7729-43b5-a50d-792a08c013bf"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
 </head>
@@ -43,26 +44,34 @@
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-12">
-                            <div id="customGraphics" class="card-setting yellow-card">                                
+                            <div id="customGraphics" class="card-setting yellow-card">                             
                             </div>
                         </div>
                     </div>
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
-                        <div id="minMax" class="card-setting orange-card">
+                        <div id="minMax" class="card-setting orange-card temperature-card">
                         </div>
                     </div>
                     <div class="col-md-5 col-xs-12">
-                        <div id="humidity" class="card-setting text-center invisible-card">
+                        <div id="humidity" class="card-setting text-center invisible-card temperature-card">
                             <h2>Humidity</h2>
                             <div id="humidityGauge"></div>
                         </div>                        
                     </div>
                     <div class="col-md-3 col-xs-12">
-                        <div class="card-setting cyan-card text-center">
+                        <div class="card-setting cyan-card text-center temperature-card">
                             <div id="wind"></div>
                             <div class="wind-direction"><img src="images/winddirection.png" class="img-responsive" /></div>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div id="sunrise"></div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div id="sunset"></div>
                     </div>
                 </div>
             </div>
@@ -85,7 +94,7 @@
             <div role="tabpanel" class="tab-pane" id="settings">
                 <div class="row">
                     <div class="col-xs-12 col-md-8 col-md-offset-2">
-                        <div class="card-setting location-setting text-center">
+                        <div class="card-setting location-setting text-center invisible-card">
                             <h2>Location settings</h2>
                             <form class="form-horizontal" role="form" onsubmit="return getLocation();">
                                 <div class="row">
@@ -106,14 +115,14 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-md-4">
-                        <div class="card-setting">
+                        <div class="card-setting settings-card yellow-card">
                             <h2>Current location selected</h2>
                             <div class="current-location">                                
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-4">
-                        <div class="card-setting">
+                        <div class="card-setting settings-card orange-card">
                             <h2>Set as default location</h2>
                             <div class="row">
                                 <div class="wrapper col-xs-6 col-md-6">
@@ -121,14 +130,14 @@
                                     <!--<button id="defaultToggle" class="btn btn-default" onclick="toggle(this.id)" disabled="disabled">NO</button>-->
                                 </div>
                                 <div class="wrapper col-xs-6 col-md-6">
-                                    <input type="checkbox" name="defaultToggle" id="defaultToggle" disabled>
+                                    <input type="checkbox" name="defaultToggle" id="defaultToggle" checked disabled>
                                     <label for="defaultToggle"></label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-4">
-                        <div class="card-setting">
+                        <div class="card-setting settings-card cyan-card">
                             <h2>Unit of measurement</h2>
                             <div class="row">
                                 <div class="wrapper col-xs-6 col-md-6">
@@ -150,7 +159,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-12">
-                    <p>Clymate by Clyde D'Souza</p>
+                    <p>Clymate by <a href="http://goo.gl/8yXVaA">Clyde D'Souza</a></p>
+                    <p><a href="http://www.github.com/ClydeDz/clymate"><i class="fa fa-github"></i></a>&nbsp;<a href="http://www.twitter.com/ClydeDz"><i class="fa fa-twitter"></i></a></p>
                 </div>
             </div>
         </div>

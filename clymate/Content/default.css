@@ -4,6 +4,7 @@
 /* blue theme */
 /* pink */
 /* headache theme */
+/*F3D9C2*/
 /* basics */
 @font-face {
   font-family: 'PassionOne';
@@ -31,12 +32,13 @@ h1, h2 {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease; }
 
-.footer {
+.footer, .footer a, .footer a:hover {
   color: #fff;
   font-family: 'PassionOne',Arial, Helvetica, sans-serif; }
 
 .footer > .container > .row > div {
-  padding: 20px 10px 20px 20px; }
+  padding: 20px 10px 20px 20px;
+  font-size: 26px; }
 
 /* override bootstrap */
 a:hover, a:active, a:focus {
@@ -48,7 +50,7 @@ a:hover, a:active, a:focus {
 
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:active, .navbar-default .navbar-brand:visited {
-  color: #F0FFED;
+  color: #F6F7BD;
   font-size: 56px;
   font-family: 'PassionOne',Arial, Helvetica, sans-serif; }
 
@@ -72,7 +74,7 @@ a:hover, a:active, a:focus {
   border-color: transparent;
   transition: border-color ease-in 0.3s;
   margin: 0;
-  color: #F0FFED;
+  color: #A78E6E;
   text-transform: uppercase;
   font-weight: 500; }
 
@@ -93,11 +95,11 @@ a:hover, a:active, a:focus {
   margin-top: 30px; }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-  color: white;
+  color: #F6F7BD;
   background-color: transparent;
   border-width: 0px;
-  border-bottom: 8px solid #F0FFED;
-  border-color: transparent transparent #F0FFED;
+  border-bottom: 8px solid #F6F7BD;
+  border-color: transparent transparent #F6F7BD;
   -moz-border-top-colors: none;
   -moz-border-right-colors: none;
   -moz-border-bottom-colors: none;
@@ -114,7 +116,7 @@ a:hover, a:active, a:focus {
   /*border-bottom-style: solid;*/
   border-color: transparent transparent #655643;
   transition: border-color ease-out 0.3s;
-  color: #fff; }
+  color: #F6F7BD; }
 
 /* media queries to support custom css */
 @media screen and (max-width: 767px) {
@@ -179,10 +181,10 @@ input#defaultToggle + label:after, input#unitsToggle + label:after {
 
 input#defaultToggle:checked + label:before, input#unitsToggle:checked + label:before {
   width: 50px;
-  background: #13bf11; }
+  background: #655643; }
 
 input#defaultToggle:checked + label:after, input#unitsToggle:checked + label:after {
   left: 20px;
-  box-shadow: inset 0 0 0 1px #13bf11, 0 2px 4px rgba(0, 0, 0, 0.2); }
+  box-shadow: inset 0 0 0 1px #655643, 0 2px 4px rgba(0, 0, 0, 0.2); }
 
 /*# sourceMappingURL=default.css.map */

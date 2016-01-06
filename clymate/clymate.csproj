@@ -117,6 +117,8 @@
     <Content Include="images\rainTimeline.jpe" />
     <Content Include="images\snow.png" />
     <Content Include="images\snowTimeline.jpe" />
+    <Content Include="images\sunrise.jpe" />
+    <Content Include="images\sunset.jpe" />
     <Content Include="images\thunderstorm.png" />
     <Content Include="images\thunderstormTimeline.jpe" />
     <Content Include="images\winddirection.png" />

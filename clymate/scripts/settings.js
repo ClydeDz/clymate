@@ -19,7 +19,9 @@ function setCurrent() {
     getTemperature(current_city, current_unit);
     if (default_city !== current_city) {
         $('#defaultToggle').prop('disabled', false);
-        $('#toggle').attr('disabled', false);
+        $('#defaultToggle').prop('checked', false);
+        $('#unitsToggle').attr('disabled', false);
+        $('#defaultToggleLabel').text("Off");
     }
 }
 //onclick="toggle(this)"
@@ -42,20 +44,27 @@ function toggle(button) {
     }
 }
 /* */
-$('#defaultToggle').live('change', function () {
+$('#defaultToggle').on('change', function () {
     if ($(this).is(':checked')) {
-        $(this).attr('disabled', true);
+        $(this).attr('disabled', true); 
+        $('#defaultToggleLabel').text("On");
+        setCookie("clymate-city", current_city, 30);
+        console.log(current_city + " " + getCookie(current_city));
     } else {
-        alert('un-checked');
+        $('#defaultToggleLabel').text("Off");
     }
 });
-$('#unitsToggle').live('change', function () {
+$('#unitsToggle').on('change', function () {
     if ($(this).is(':checked')) {
-        $('#unitsToggleLabel').innerHTML("Celsius");
-        setCookie("clymate-units", "Celsius", 30);
+        $('#unitsToggleLabel').text("Celsius");
+        setCookie("clymate-units", "metric", 30);
+        current_unit = "metric";
+        setTemperature();
     } else {
-        $('#unitsToggleLabel').innerHTML("Farenheit");
-        setCookie("clymate-units", "Farenheit", 30);
+        $('#unitsToggleLabel').text("Farenheit");
+        setCookie("clymate-units", "imperial", 30);
+        current_unit = "imperial";
+        setTemperature();
     }
 });
 /* */

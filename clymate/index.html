@@ -8,6 +8,7 @@
     <link href="Content/c3.css" rel="stylesheet" />
     <link href="Content/default.css" rel="stylesheet" />
     <link href="Content/cards.css" rel="stylesheet" />
+    <link href="Content/sweetalert.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
     <script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"01c92632-7729-43b5-a50d-792a08c013bf"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
@@ -40,7 +41,6 @@
                     <div class="row">
                         <div class="col-md-9 col-xs-12">
                             <div id="temperatureMain" class="card-setting">
-                                    Auckland 30c
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-12">
@@ -68,10 +68,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
-                        <div id="sunrise"></div>
+                        <div id="sunrise" class="card-setting"></div>
                     </div>
                     <div class="col-md-6 col-xs-12">
-                        <div id="sunset"></div>
+                        <div id="sunset" class="card-setting"></div>
                     </div>
                 </div>
             </div>
@@ -79,16 +79,38 @@
             <div role="tabpanel" class="tab-pane" id="uv">
                 <div class="row">
                     <div class="col-md-8 col-xs-12">
-                        <div id="uvMain" class="card-setting">
-                            Auckland 30c
+                        <div id="uvMain" class="card-setting uv-main-cards">
                         </div>
                     </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div class="card-setting">
-                            Auckland 30c
+                    <div class="col-md-4 col-xs-12 text-center">
+                        <div class="card-setting uv-main-cards orange-card">
+                            <i class="fa fa-hand-paper-o fa-3x"></i>
+                            <p>Check your skin tone for potential UV effects</p>
                         </div>
                     </div>
-                </div>    
+                </div>  
+                <div class="row">
+                    <div class="col-md-3 col-xs-6 text-center">
+                        <div class="card-setting uv-cards yellow-card"><i class="fa fa-sun-o fa-3x"></i>
+                        <p id="spf"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-6 text-center">
+                        <div class="card-setting uv-cards orange-card"><i class="fa fa-shield fa-3x"></i>
+                        <p id="shield"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-6 text-center">
+                        <div class="card-setting uv-cards invisible-card"><i class="fa fa-tree fa-3x"></i>
+                        <p id="shade"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-6 text-center">
+                        <div class="card-setting uv-cards cyan-card"> <i class="fa fa-clock-o fa-3x"></i>
+                        <p id="exposure"></p>
+                        </div>
+                    </div>
+                </div>  
             </div>
             <!--Settings tab--->
             <div role="tabpanel" class="tab-pane" id="settings">
@@ -103,6 +125,7 @@
                                     </div>
                                     <div class="col-lg-2 search-button">
                                         <input type="submit" value="Search" class="btn btn-success" />
+                                        <input type="button" value="Search location" class="btn btn-primary" onclick="swalGetLocation() "/>
                                     </div>
                                 </div>
                              </form>
@@ -173,6 +196,7 @@
     <script src="scripts/c3.min.js"></script>
     <script src="scripts/default.js"></script>
     <script src="scripts/settings.js"></script>
+    <script src="scripts/sweetalert.min.js"></script>
     <script>
     $(window).bind('scroll', function () {
         if ($(window).scrollTop() > $('.header>.navbar').height() +10) {

@@ -93,24 +93,23 @@ input[type=text]#locationTextBox {
   background-color: #308446;
   background: url("../images/clearTimeline.jpe") no-repeat scroll center center rgba(134, 134, 134, 0.7); }
 
-#sunset {
+#sunset, #sunrise {
+  font-size: 25px;
   display: block;
   min-height: 250px;
   color: #fff;
   font-family: 'PassionOne',Arial, Helvetica, sans-serif;
   text-shadow: 5px 5px 7px #171717;
   background-color: #80BCA3;
-  padding: 15px 1px 15px 15px;
+  padding-top: 15px; }
+
+#sunrise h2, #sunset h2 {
+  font-size: 48px; }
+
+#sunset {
   background: url("../images/sunset.jpe") no-repeat scroll center center rgba(134, 134, 134, 0.7); }
 
 #sunrise {
-  display: block;
-  min-height: 250px;
-  color: #fff;
-  font-family: 'PassionOne',Arial, Helvetica, sans-serif;
-  text-shadow: 5px 5px 7px #171717;
-  background-color: #E6AC27;
-  padding: 15px 1px 15px 15px;
   background: url("../images/sunrise.jpe") no-repeat scroll center center rgba(134, 134, 134, 0.7); }
 
 #customGraphics {
@@ -136,8 +135,8 @@ input[type=text]#locationTextBox {
   width: 50px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
-  margin-bottom: 40px; }
+  margin-top: 25px;
+  margin-bottom: 25px; }
 
 .city-name, .temperature-value {
   font-size: 55px;
@@ -154,5 +153,25 @@ input[type=text]#locationTextBox {
 
 .weather-description {
   text-shadow: 5px 5px 7px #171717; }
+
+/* uv cards*/
+#uvMain {
+  display: block;
+  min-height: 250px;
+  padding-top: 10px;
+  background-color: #BF4D28;
+  background: url("../images/uv.jpe") no-repeat scroll center center rgba(134, 134, 134, 0.7); }
+
+.uv-cards {
+  min-height: 287px;
+  padding-top: 36px; }
+
+.uv-main-cards {
+  min-height: 250px;
+  padding-top: 40px; }
+
+.uv-index {
+  font-size: 140px;
+  margin-right: 20px; }
 
 /*# sourceMappingURL=cards.css.map */

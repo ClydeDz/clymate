@@ -12,11 +12,31 @@ function getLocation() {
     (flag == 0) ? $(".settings-error").text("Enter a valid city") : setCurrent();
     return false;
 }
+function swalGetLocation() {
+    swal({
+        title: "An input!",
+        text: "Write something interesting:",
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: false,
+        animation: "slide-from-top",
+        inputPlaceholder: "Write something"
+    },
+    function (inputValue) {
+        if (inputValue === false) return false;
+        if (inputValue === "") {
+            swal.showInputError("You need to write something!");
+            return false
+        }
+        swal("Nice!", "You wrote: " + inputValue, "success");
+    });
+}
 
 function setCurrent() {
     $(".settings-error").text("");
     current_city = $("#locationTextBox").val();
-    getTemperature(current_city, current_unit);
+    getTemperature();
+    getUV();
     if (default_city !== current_city) {
         $('#defaultToggle').prop('disabled', false);
         $('#defaultToggle').prop('checked', false);

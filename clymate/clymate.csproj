@@ -102,6 +102,7 @@
     <Content Include="Content\default.css">
       <DependentUpon>default.scss</DependentUpon>
     </Content>
+    <Content Include="Content\sweetalert.css" />
     <Content Include="images\additional.png" />
     <Content Include="images\atmosphere.png" />
     <Content Include="images\atmosphereTimeline.jpe" />
@@ -121,6 +122,7 @@
     <Content Include="images\sunset.jpe" />
     <Content Include="images\thunderstorm.png" />
     <Content Include="images\thunderstormTimeline.jpe" />
+    <Content Include="images\uv.jpe" />
     <Content Include="images\winddirection.png" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -131,6 +133,7 @@
     <Content Include="scripts\default.js" />
     <Content Include="scripts\jquery-ui.js" />
     <Content Include="scripts\settings.js" />
+    <Content Include="scripts\sweetalert.min.js" />
     <Content Include="scripts\typeahead.js" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="scripts\jquery-1.9.1.min.map" />

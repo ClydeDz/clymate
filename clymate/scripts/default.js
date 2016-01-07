@@ -20,6 +20,13 @@ var current_unit = "metric";
 var temperatureJson = [
     {country:"",realFeel:"",min:"",max:"",wind:"",windDirection:"",windUnits:"",humidity:"",description:"",main:"",units:"",sunrise:"",sunset:""}
 ];
+var uvFacts = [
+    { uvRadiation: "Low", spf: "Mild sunscreen is advised its a bright day though not required", shield: "No specific clothing is advised at low levels of UV index. However, its recommended to wear shades or hats for protection", shade: "Seek shade if its a bright day or if you have particularly fair skin", exposure: "Avoid being under the sun is it strong" },
+    { uvRadiation: "Medium", spf: "Wearing a sunscreen is recommended", shield: "Wear clothes that cover your body and provide protection from the sun", shade: "Seek shade during noon hours when the sun is the strongest", exposure: "Avoid long exposures under the sun without any protection" },
+    { uvRadiation: "High", spf: "Wearing 30+ SPF sunscreen is highly recommended", shield: "Wear clothes that provide protection against sun coupled with a headgear and shades", shade: "Avoid long exposure under sun and seek shade whenever possible", exposure: "Avoid exposures under the sun especially during noon time when the sun is the strongest" },
+    { uvRadiation: "Very high", spf: "Wear 30+ SPF sunscreen and reapply after every two hours", shield: "Wear clothes that provide protection against sun coupled with a headgear and shades", shade: "Avoid long exposure under sun and seek shade whenever possible", exposure: "Avoid exposure under sun within three hours of solar noon" },
+    { uvRadiation: "Extreme", spf: "Wear 30+ SPF sunscreen and reapply after every two hours", shield: "Wear clothes that cover you up entirely and a wide brimmed hat and shades. UV protective clothing is recommended", shade: "Seek shade whenever possible and avoid long exposure to sun", exposure: "Avoid being under the sun for more than ten minutes at a stretch and avoid outdoors within three hours of solar noon" }
+];
 function loadClymate() {
     // look for cookies
     getOrSetCityCookie();
@@ -35,7 +42,7 @@ function loadClymate() {
     getTemperature();
 
     // load uv
-    //getUV();
+    getUV();
 }
 
 /*cookies start*/
@@ -208,10 +215,9 @@ function setTemperature() {
     /*humidity*/
     loadHumidityGauge(temperatureJson[0].humidity);
     /**/
-    console.log(temperatureJson[0].sunrise + " " + temperatureJson[0].sunset);
-    var sunriseText = "<h2>Sunrise</h2><div>" + temperatureJson[0].sunrise + "</div>";
+    var sunriseText = "<h2>Sunrise</h2><div>" + calculateTime(temperatureJson[0].sunrise) + "</div>";
     document.getElementById('sunrise').innerHTML = "" + sunriseText;
-    var sunsetText = "<h2>Sunset</h2><div>" + temperatureJson[0].sunset + "</div>";
+    var sunsetText = "<h2>Sunset</h2><div>" + calculateTime(temperatureJson[0].sunset) + "</div>";
     document.getElementById('sunset').innerHTML = "" + sunsetText;
     /**/
     $(".current-location").text("" + current_city + ", " + temperatureJson[0].country);
@@ -222,12 +228,59 @@ function loadHumidityGauge(input) {
     },1500);
 }
 
+function getUV() {
+    uvModule.getUVData(setUV);
+}
+
+function calculateTime(weirdTime) {
+    var d = new Date(weirdTime * 1000);
+    return d;
+}
+function setUV(data) {
+    console.log(data);
+    console.log(data.data.weather[0].uvIndex);
+    console.log("uv country test "+temperatureJson[0].country);
+    var uvText = "<div class='row'><div class='col-md-10 col-xs-12'><div class='city-name'>" + current_city + "</div>";
+    uvText += "<div class='city-country'>" + temperatureJson[0].country + "</div>";
+    uvText += "<div class='city-country'>UV intensity:  " + defineUvIndex(data.data.weather[0].uvIndex) + "</div></div>";
+    uvText += "<div class='col-md-2 col-xs-12 text-center'><div class='temperature-value uv-index'>" + data.data.weather[0].uvIndex + "</div></div></div>";
+    document.getElementById('uvMain').innerHTML = "" + uvText;
+    var localUvData = translateUvData(defineUvIndex(data.data.weather[0].uvIndex));
+    document.getElementById('spf').innerHTML = localUvData.spf;
+    document.getElementById('shield').innerHTML = localUvData.shield;
+    document.getElementById('shade').innerHTML = localUvData.shade;
+    document.getElementById('exposure').innerHTML = localUvData.exposure;
+}
+function translateUvData(input){
+    for (var i = 0; i < uvFacts.length; i++) {
+        if(uvFacts[i].uvRadiation==input){
+            return uvFacts[i];
+        }
+    }
+}
+function defineUvIndex(input) {
+    if (input >= 0 && input <= 2.9) {
+        return "Low";
+    }
+    else if (input >= 3 && input <= 5.9) {
+        return "Moderate";
+    }
+    else if (input >= 6 && input <= 7.9) {
+        return "High";
+    }
+    else if (input >= 8 && input <= 10.9) {
+        return "Very high";
+    }
+    else {
+        return "Extreme";
+    }
+}
 /*conversion functions*/
 function toCelsius(faren) {
     return ((faren - 32) * (5 / 9)).toFixed(2);
 }
 function toFarenheit(cel) {
-    return ((cel*1.800)+32);
+    return ((cel * 1.800) + 32).toFixed(2);
 }
 function toMph(kph) {
     return (kph/1.609344).toFixed(2);
@@ -251,6 +304,24 @@ var weatherModule = (function () {
                         callback(data);
                     else
                         errorText();
+                }
+            });
+        }
+    };
+}());
+var uvModule = (function () {
+    return {
+        getUVData: function (callback) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                //http://api.worldweatheronline.com/free/v2/weather.ashx?q=thane&key=f41008acf13edf7e61c1d4a61f288&format=json
+                url: "http://api.worldweatheronline.com/free/v2/weather.ashx?q="+current_lat+","+current_long+"&key=f41008acf13edf7e61c1d4a61f288&format=json",
+                success: function (data) {
+                    //if (data["cod"] == 200)
+                        callback(data);
+                    ///else
+                       // errorText();
                 }
             });
         }

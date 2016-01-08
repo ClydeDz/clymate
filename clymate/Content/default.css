@@ -50,7 +50,7 @@ a:hover, a:active, a:focus {
 
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:active, .navbar-default .navbar-brand:visited {
-  color: #F6F7BD;
+  color: #fff;
   font-size: 56px;
   font-family: 'PassionOne',Arial, Helvetica, sans-serif; }
 
@@ -95,11 +95,11 @@ a:hover, a:active, a:focus {
   margin-top: 30px; }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-  color: #F6F7BD;
+  color: #fff;
   background-color: transparent;
   border-width: 0px;
-  border-bottom: 8px solid #F6F7BD;
-  border-color: transparent transparent #F6F7BD;
+  border-bottom: 8px solid #fff;
+  border-color: transparent transparent #fff;
   -moz-border-top-colors: none;
   -moz-border-right-colors: none;
   -moz-border-bottom-colors: none;

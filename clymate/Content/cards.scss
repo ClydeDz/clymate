@@ -195,8 +195,7 @@ input[type=text]#locationTextBox{
 .location-btn{
     background-color: transparent;
     border-radius: 4px;
-    margin: 0;
-    margin-right:5px;
+    margin:5px 5px 5px 0px;
     outline: 0; /* No focus outline */
     padding: 5px 10px 5px 10px;
     border: 1px solid $headache_ash;

@@ -37,7 +37,7 @@
     <div class="container">
         <div class="tab-content">
             <!--General temperature tab--->
-            <div role="tabpanel" class="tab-pane fade in active" id="general">
+            <div role="tabpanel" class="tab-pane active" id="general">
                     <div class="row">
                         <div class="col-md-9 col-xs-12">
                             <div id="temperatureMain" class="card-setting">
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <!--UV tab--->
-            <div role="tabpanel" class="tab-pane fade" id="uv">
+            <div role="tabpanel" class="tab-pane" id="uv">
                 <div class="row">
                     <div class="col-md-8 col-xs-12">
                         <div id="uvMain" class="card-setting uv-main-cards">
@@ -86,27 +86,27 @@
                         <div class="card-setting uv-main-cards orange-card">
                             <i class="fa fa-hand-paper-o fa-3x"></i>
                             <p>Check your skin tone for potential UV effects</p>
-                            <a href="http://www.skincancer.org/prevention/are-you-at-risk/skin-types-and-at-risk-groups" class="location-btn" >Find out more&nbsp;<i class="fa fa-external-link"></i></a>
+                            <a href="#" class="btn btn-warning">Find out more</a>
                         </div>
                     </div>
                 </div>  
                 <div class="row">
-                    <div class="col-md-3 col-xs-12 text-center">
+                    <div class="col-md-3 col-xs-6 text-center">
                         <div class="card-setting uv-cards yellow-card"><i class="fa fa-sun-o fa-3x"></i>
                         <p id="spf"></p>
                         </div>
                     </div>
-                    <div class="col-md-3 col-xs-12 text-center">
+                    <div class="col-md-3 col-xs-6 text-center">
                         <div class="card-setting uv-cards orange-card"><i class="fa fa-shield fa-3x"></i>
                         <p id="shield"></p>
                         </div>
                     </div>
-                    <div class="col-md-3 col-xs-12 text-center">
+                    <div class="col-md-3 col-xs-6 text-center">
                         <div class="card-setting uv-cards invisible-card"><i class="fa fa-tree fa-3x"></i>
                         <p id="shade"></p>
                         </div>
                     </div>
-                    <div class="col-md-3 col-xs-12 text-center">
+                    <div class="col-md-3 col-xs-6 text-center">
                         <div class="card-setting uv-cards cyan-card"> <i class="fa fa-clock-o fa-3x"></i>
                         <p id="exposure"></p>
                         </div>
@@ -114,21 +114,39 @@
                 </div>  
             </div>
             <!--Settings tab--->
-            <div role="tabpanel" class="tab-pane fade" id="settings">
+            <div role="tabpanel" class="tab-pane" id="settings">
                 <div class="row">
-                    <div class="col-xs-12 col-md-12 text-center">
-                        <div class="card-setting current-location-card yellow-card">
-                            <h2>Current location selected</h2>
-                            <div class="current-location"></div>
-                            <div>
-                                <button type="button" class="location-btn" onclick="swalGetLocation();"><i class="fa fa-edit"></i>&nbsp;Change</button>
-                            </div>                            
+                    <div class="col-xs-12 col-md-8 col-md-offset-2">
+                        <div class="card-setting location-setting text-center invisible-card">
+                            <h2>Location settings</h2>
+                            <form class="form-horizontal" role="form" onsubmit="return getLocation();">
+                                <div class="row">
+                                    <div class="col-lg-10 search-box">
+                                        <input type="text" class="form-control" id="locationTextBox" />
+                                    </div>
+                                    <div class="col-lg-2 search-button">
+                                        <input type="submit" value="Search" class="btn btn-success" />
+                                        <input type="button" value="Search location" class="btn btn-primary" onclick="swalGetLocation() "/>
+                                    </div>
+                                </div>
+                             </form>
+                            <div class="row">
+                                <div class="text-danger settings-error">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-md-4">
-                        <div class="card-setting settings-card invisible-card">
+                        <div class="card-setting settings-card yellow-card">
+                            <h2>Current location selected</h2>
+                            <div class="current-location">                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <div class="card-setting settings-card orange-card">
                             <h2>Set as default location</h2>
                             <div class="row">
                                 <div class="wrapper col-xs-6 col-md-6">
@@ -157,16 +175,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-4">
-                        <div class="card-setting settings-card orange-card">
-                            <h2>Auto refresh</h2>
-                            <div>
-                                <button type="button" class="location-btn" onclick="changeTimer(this,900000);">10 mins</button>
-                                <button type="button" class="location-btn" onclick="changeTimer(this, 1800000);">30 mins</button>
-                                <button type="button" class="location-btn active-button" onclick="changeTimer(this, 0);">Manual</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -192,7 +200,7 @@
     <script src="scripts/sweetalert.min.js"></script>
     <script>
     $(window).bind('scroll', function () {
-        if ($(window).scrollTop() > $('.header>.navbar').height()+150) {
+        if ($(window).scrollTop() > $('.header>.navbar').height() +10) {
             $('.tab-header').addClass('fixed');
         } else {
             $('.tab-header').removeClass('fixed');

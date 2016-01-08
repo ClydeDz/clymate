@@ -17,9 +17,12 @@ var current_city;
 var current_lat = 40.71;
 var current_long = -74.01;
 var current_unit = "metric";
+var current_refresh = 4000;
+var current_refresh_flag = false;
 var temperatureJson = [
     {country:"",realFeel:"",min:"",max:"",wind:"",windDirection:"",windUnits:"",humidity:"",description:"",main:"",units:"",sunrise:"",sunset:""}
 ];
+//var myVar = setInterval(getTemperatureAndUv, current_refresh);
 var uvFacts = [
     { uvRadiation: "Low", spf: "Mild sunscreen is advised its a bright day though not required", shield: "No specific clothing is advised at low levels of UV index. However, its recommended to wear shades or hats for protection", shade: "Seek shade if its a bright day or if you have particularly fair skin", exposure: "Avoid being under the sun is it strong" },
     { uvRadiation: "Medium", spf: "Wearing a sunscreen is recommended", shield: "Wear clothes that cover your body and provide protection from the sun", shade: "Seek shade during noon hours when the sun is the strongest", exposure: "Avoid long exposures under the sun without any protection" },
@@ -27,6 +30,7 @@ var uvFacts = [
     { uvRadiation: "Very high", spf: "Wear 30+ SPF sunscreen and reapply after every two hours", shield: "Wear clothes that provide protection against sun coupled with a headgear and shades", shade: "Avoid long exposure under sun and seek shade whenever possible", exposure: "Avoid exposure under sun within three hours of solar noon" },
     { uvRadiation: "Extreme", spf: "Wear 30+ SPF sunscreen and reapply after every two hours", shield: "Wear clothes that cover you up entirely and a wide brimmed hat and shades. UV protective clothing is recommended", shade: "Seek shade whenever possible and avoid long exposure to sun", exposure: "Avoid being under the sun for more than ten minutes at a stretch and avoid outdoors within three hours of solar noon" }
 ];
+
 function loadClymate() {
     // look for cookies
     getOrSetCityCookie();
@@ -37,14 +41,15 @@ function loadClymate() {
     initializeHumidityGauge();
     initializeUnitsToggle()
     $(".current-location").text("" + current_city);
+    getTemperatureAndUv();
+}
 
+function getTemperatureAndUv() {
     // load temperature
     getTemperature();
-
     // load uv
     getUV();
 }
-
 /*cookies start*/
 function getOrSetCityCookie() {
     if(checkCookie("clymate-city")){
@@ -168,7 +173,7 @@ function storeTemperature(data) {
     temperatureJson[0].humidity = data["main"].humidity;
     temperatureJson[0].windDirection = data["wind"].deg;
     temperatureJson[0].windUnits = "mph";
-    temperatureJson[0].country = data["sys"].country;
+    temperatureJson[0].country = initialCapitalize(data["sys"].country);
     temperatureJson[0].main = data.weather[0].main;
     temperatureJson[0].sunrise = data["sys"].sunrise;
     temperatureJson[0].sunset = data["sys"].sunset;
@@ -221,6 +226,7 @@ function setTemperature() {
     document.getElementById('sunset').innerHTML = "" + sunsetText;
     /**/
     $(".current-location").text("" + current_city + ", " + temperatureJson[0].country);
+    console.log(temperatureJson[0].country);
 }
 function loadHumidityGauge(input) {
     GaugeChart.load({
@@ -250,6 +256,10 @@ function setUV(data) {
     document.getElementById('shield').innerHTML = localUvData.shield;
     document.getElementById('shade').innerHTML = localUvData.shade;
     document.getElementById('exposure').innerHTML = localUvData.exposure;
+    console.log("before refresh");
+    // auto refresh
+    if(current_refresh_flag==true)
+        setTimeout(getTemperatureAndUv, current_refresh);
 }
 function translateUvData(input){
     for (var i = 0; i < uvFacts.length; i++) {
@@ -288,6 +298,9 @@ function toMph(kph) {
 function toKph(mph) {
     return (mph*1.609344).toFixed(2);
 }
+function initialCapitalize(input) {
+    return (input).toString().charAt(0).toUpperCase().concat(input.toString().substr(1, input.toString().length - 1));
+}
 /*conversion functions end*/
 
 
@@ -303,7 +316,24 @@ var weatherModule = (function () {
                     if (data["cod"] == 200)
                         callback(data);
                     else
-                        errorText();
+                       return false;
+                }
+            });
+        }
+    };
+}());
+var locationModule = (function () {
+    return {
+        checkLocation: function (input) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "http://api.openweathermap.org/data/2.5/weather?q=" + input + "&units=imperial&appid=2de143494c0b295cca9337e1e96b00e0",
+                success: function (data) {
+                    if (data["cod"] == 200)
+                    { anotherTest(true,input);}
+                    else
+                    { anotherTest(false,input); }
                 }
             });
         }

@@ -17,9 +17,6 @@
   padding: 10px;
   margin: 5px; }
 
-.settings-card {
-  min-height: 140px; }
-
 .temperature-card {
   min-height: 261px; }
 
@@ -173,5 +170,53 @@ input[type=text]#locationTextBox {
 .uv-index {
   font-size: 140px;
   margin-right: 20px; }
+
+/* settings */
+.settings-card {
+  min-height: 140px; }
+
+.current-location-card {
+  min-height: 250px;
+  padding-top: 25px; }
+
+.current-location-card h2 {
+  font-size: 60px; }
+
+.current-location {
+  font-size: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+.location-btn {
+  background-color: transparent;
+  border-radius: 4px;
+  margin: 0;
+  margin-right: 5px;
+  outline: 0;
+  /* No focus outline */
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #655643;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 5px 0 #2F231F;
+  /* xOffset yOffset blur */
+  transition: all .1s linear;
+  color: white; }
+
+.location-btn:active {
+  box-shadow: 0 2px 0 #2F231F;
+  /* xOffset yOffset blur */
+  transform: translateY(3px);
+  /* move down */
+  background-color: #7A664D;
+  color: white;
+  text-decoration: none; }
+
+.location-btn:hover, .location-btn:visited {
+  color: white;
+  text-decoration: none; }
+
+.active-button {
+  background-color: #655643; }
 
 /*# sourceMappingURL=cards.css.map */

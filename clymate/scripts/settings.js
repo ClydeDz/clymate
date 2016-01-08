@@ -14,27 +14,40 @@ function getLocation() {
 }
 function swalGetLocation() {
     swal({
-        title: "An input!",
-        text: "Write something interesting:",
+        title: "Enter your location",
+        text: "",
         type: "input",
         showCancelButton: true,
-        closeOnConfirm: false,
+        closeOnConfirm: true,
         animation: "slide-from-top",
-        inputPlaceholder: "Write something"
+        inputPlaceholder: "Enter your location"
     },
-    function (inputValue) {
+    function(inputValue) {
         if (inputValue === false) return false;
         if (inputValue === "") {
             swal.showInputError("You need to write something!");
             return false
         }
-        swal("Nice!", "You wrote: " + inputValue, "success");
+        // check if location is good and get and set data and show success
+        locationModule.checkLocation(inputValue);
     });
+}
+function anotherTest(x,y) {
+    if (x) {
+        console.log("y");
+        swal("Well done!", "We found "+y+" on this planet!", "success");
+        current_city = initialCapitalize(y);
+        setCurrent();
+    }
+    else {
+        console.log("n");
+        swal("Argh..", "We couldn't find "+y+" on this planet", "error");
+    }
 }
 
 function setCurrent() {
-    $(".settings-error").text("");
-    current_city = $("#locationTextBox").val();
+    //$(".settings-error").text("");
+    //current_city = $("#locationTextBox").val();
     getTemperature();
     getUV();
     if (default_city !== current_city) {
@@ -105,7 +118,23 @@ function getCitiesList() {
         });
     });
 }
-
+function changeTimer(id, input) {
+    $('.location-btn').removeClass('active-button');
+    $(id).addClass('active-button');
+    if (input == 0) {
+        current_refresh_flag = false;
+        current_refresh = input;
+    }
+    else if(input==900000){
+        current_refresh_flag = true;
+        current_refresh = input;
+    }
+    else if (input == 1800000) {
+        current_refresh_flag = true;
+        current_refresh = input;
+    }
+    console.log(input + " " + current_refresh);
+}
 //url: "https://restcities.eu/rest/v1/all",
 /* API modules */
 var countryModule = (function () {

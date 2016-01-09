@@ -38,7 +38,7 @@ function loadClymate() {
 
     // load settings
     getCitiesList();
-    initializeHumidityGauge();
+    //initializeHumidityGauge();
     initializeUnitsToggle()
     $(".current-location").text("" + current_city);
     getTemperatureAndUv();

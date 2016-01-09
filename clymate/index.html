@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
     <script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"01c92632-7729-43b5-a50d-792a08c013bf"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
+<style>
+    .chart{
+        width: 100%;
+        position:absolute;
+        left:0;
+    }
+</style>
 </head>
 <body onload="loadClymate()">
     <div class="header">
@@ -229,7 +236,7 @@
             },
             size: {
                 height: 180
-            },
+            }
             //onresize: function () {
             //    GaugeChart.resize({
             //        height: 180,
@@ -240,7 +247,17 @@
         });
     </script>
     <script>
-    $(window).bind('scroll', function () {
+        var rz = 0;
+        $('.nav-tabs > li > a').click(function (e) {
+            if (e.currentTarget.innerHTML == "General") {
+                rz = 0;
+            }
+        })
+        $(window).bind('scroll', function () {
+            rz++;
+            if (rz < 2) {
+                $(window).trigger('resize');
+            }            
         if ($(window).scrollTop() > $('.header>.navbar').height()) {
             $('.tab-header').addClass('fixed');
         } else {

@@ -258,9 +258,12 @@ function setTemperature() {
     console.log(temperatureJson[0].country);
 }
 function loadHumidityGauge(input) {
+    //$(window).stopImmediatePropagation();
     GaugeChart.load({
-        columns: [['Humidity', input]]
-    },1500);
+            columns: [['Humidity', input]]
+    }, 1500);
+
+    //setTimeout(this.chart.flush, 300);
 }
 
 function getUV() {

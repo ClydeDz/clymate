@@ -43,6 +43,7 @@ function anotherTest(x,y) {
         console.log("n");
         swal("Argh..", "We couldn't find "+y+" on this planet", "error");
     }
+    rz = 0;
 }
 
 function setCurrent() {

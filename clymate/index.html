@@ -247,22 +247,30 @@
         });
     </script>
     <script>
-        var rz = 0;
+        var rz = 1;
+        function resizeHumidityGaugeModel() {
+            console.log("called");
+            setTimeout(resizeHumidityGauge, 600);
+        }
+        function resizeHumidityGauge(){
+            $(window).trigger('resize');
+        }
         $('.nav-tabs > li > a').click(function (e) {
             if (e.currentTarget.innerHTML == "General") {
-                rz = 0;
+                if (rz == 0) {
+                    resizeHumidityGaugeModel();
+                    rz = 1;
+                }
             }
         })
         $(window).bind('scroll', function () {
-            rz++;
-            if (rz < 2) {
-                $(window).trigger('resize');
-            }            
+
         if ($(window).scrollTop() > $('.header>.navbar').height()) {
             $('.tab-header').addClass('fixed');
         } else {
             $('.tab-header').removeClass('fixed');
         }
+
     });
     </script>
 </body>

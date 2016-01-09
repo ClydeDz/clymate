@@ -114,6 +114,7 @@
     <Content Include="images\drizzleTimeline.jpe" />
     <Content Include="images\extreme.png" />
     <Content Include="images\extremeTimeline.jpe" />
+    <Content Include="images\favicon.png" />
     <Content Include="images\rain.png" />
     <Content Include="images\rainTimeline.jpe" />
     <Content Include="images\snow.png" />

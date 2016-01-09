@@ -20,7 +20,7 @@ var current_unit = "metric";
 var current_refresh = 4000;
 var current_refresh_flag = false;
 var temperatureJson = [
-    {country:"",realFeel:"",min:"",max:"",wind:"",windDirection:"",windUnits:"",humidity:"",description:"",main:"",units:"",sunrise:"",sunset:""}
+    {country:"",realFeel:"",min:"",max:"",wind:"",windDirection:"",windUnits:"",humidity:"",description:"",main:"",units:"",sunrise:"",sunset:"",code:""}
 ];
 //var myVar = setInterval(getTemperatureAndUv, current_refresh);
 var uvFacts = [
@@ -174,12 +174,41 @@ function storeTemperature(data) {
     temperatureJson[0].windDirection = data["wind"].deg;
     temperatureJson[0].windUnits = "mph";
     temperatureJson[0].country = initialCapitalize(data["sys"].country);
-    temperatureJson[0].main = data.weather[0].main;
     temperatureJson[0].sunrise = data["sys"].sunrise;
     temperatureJson[0].sunset = data["sys"].sunset;
+    temperatureJson[0].main = data.weather[0].main;
     temperatureJson[0].description = (data.weather[0].description).toString().charAt(0).toUpperCase().concat(data.weather[0].description.toString().substr(1, data.weather[0].description.toString().length - 1));
     /*store latitude and longitude*/
     current_lat = data["coord"].lat; current_long = data["coord"].lon;
+    /*look out for the codes and show pictures accordingly*/
+    if(data.weather[0].id==200||data.weather[0].id==201||data.weather[0].id==202||data.weather[0].id==210||data.weather[0].id==211||data.weather[0].id==212||data.weather[0].id==221||data.weather[0].id==230||data.weather[0].id==231||data.weather[0].id==232){
+        temperatureJson[0].code = "thunderstorm";
+    }
+    else if (data.weather[0].id == 300 || data.weather[0].id == 301 || data.weather[0].id == 302 || data.weather[0].id == 310 || data.weather[0].id == 311 || data.weather[0].id == 312 || data.weather[0].id == 313 || data.weather[0].id == 314 || data.weather[0].id == 321) {
+        temperatureJson[0].code = "drizzle";
+    }
+    else if (data.weather[0].id == 500 || data.weather[0].id == 501 || data.weather[0].id == 502 || data.weather[0].id == 503 || data.weather[0].id == 504 || data.weather[0].id == 511 || data.weather[0].id == 520 || data.weather[0].id == 521 || data.weather[0].id == 522 || data.weather[0].id == 531) {
+        temperatureJson[0].code = "rain";
+    }
+    else if (data.weather[0].id == 600 || data.weather[0].id == 601 || data.weather[0].id == 602 || data.weather[0].id == 611 || data.weather[0].id == 612 || data.weather[0].id == 615 || data.weather[0].id == 616 || data.weather[0].id == 620 || data.weather[0].id == 621 || data.weather[0].id == 622) {
+        temperatureJson[0].code = "snow";
+    }
+    else if (data.weather[0].id == 701 || data.weather[0].id == 711 || data.weather[0].id == 721 || data.weather[0].id == 731 || data.weather[0].id == 741 || data.weather[0].id == 751 || data.weather[0].id == 761 || data.weather[0].id == 762 || data.weather[0].id == 771 || data.weather[0].id == 781) {
+        temperatureJson[0].code = "atmosphere";
+    }
+    else if (data.weather[0].id == 801 || data.weather[0].id == 802 || data.weather[0].id == 803 || data.weather[0].id == 804) {
+        temperatureJson[0].code = "clouds";
+    }
+    else if (data.weather[0].id == 900 || data.weather[0].id == 901 || data.weather[0].id == 902 || data.weather[0].id == 903 || data.weather[0].id == 904 || data.weather[0].id == 905 || data.weather[0].id == 906) {
+        temperatureJson[0].code = "extreme";
+    }
+    else if (data.weather[0].id == 951 || data.weather[0].id == 952 || data.weather[0].id == 953 || data.weather[0].id == 954 || data.weather[0].id == 955 || data.weather[0].id == 956 || data.weather[0].id == 957 || data.weather[0].id == 958 || data.weather[0].id == 959 || data.weather[0].id == 960 || data.weather[0].id == 961 || data.weather[0].id == 962) {
+        temperatureJson[0].code = "additional";
+    }
+    else {
+        temperatureJson[0].code = "clear";
+    }
+    temperatureJson[0].main = data.weather[0].main;
     setTemperature();
 }
 function setTemperature() {
@@ -207,9 +236,9 @@ function setTemperature() {
     temperatureMainText += "<div class='city-country'>" + temperatureJson[0].country + "</div><div class='temperature-value'>" + temperatureJson[0].realFeel + "<span class='temperature-unit'>" + temperatureJson[0].units + "</span></div>";
     temperatureMainText += "<div class='weather-description'>" + temperatureJson[0].description + "</div>";
     document.getElementById('temperatureMain').innerHTML = "" + temperatureMainText;
-    document.getElementById("temperatureMain").style.background = "url('../images/" + temperatureJson[0].main.toString().toLowerCase() + "Timeline.jpe')  no-repeat scroll center center";
+    document.getElementById("temperatureMain").style.background = "url('../images/" + temperatureJson[0].code.toString().toLowerCase() + "Timeline.jpe')  no-repeat scroll center center";
     /*custom graphic*/
-    document.getElementById('customGraphics').innerHTML = "<img src='images/" + temperatureJson[0].main.toString().toLowerCase() + ".png' class='img-responsive' height='180' width='180'/>";
+    document.getElementById('customGraphics').innerHTML = "<img src='images/" + temperatureJson[0].code.toString() + ".png' title='" + temperatureJson[0].description + "' class='img-responsive' height='180' width='180'/>";
     /*wind*/
     var windText = "<div><h2>Wind</h2></div><div class='temperature-unit'>" + temperatureJson[0].wind + " " + temperatureJson[0].windUnits + "</div>";
     document.getElementById('wind').innerHTML = "" + windText;
@@ -287,10 +316,10 @@ function defineUvIndex(input) {
 }
 /*conversion functions*/
 function toCelsius(faren) {
-    return ((faren - 32) * (5 / 9)).toFixed(2);
+    return ((faren - 32) * (5 / 9)).toFixed(0);
 }
 function toFarenheit(cel) {
-    return ((cel * 1.800) + 32).toFixed(2);
+    return ((cel * 1.800) + 32).toFixed(0);
 }
 function toMph(kph) {
     return (kph/1.609344).toFixed(2);

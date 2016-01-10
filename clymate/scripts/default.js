@@ -169,7 +169,7 @@ function storeTemperature(data) {
     temperatureJson[0].min = data["main"].temp_min;
     temperatureJson[0].max = data["main"].temp_max;
     temperatureJson[0].wind = data["wind"].speed;
-    temperatureJson[0].units = "&deg;F";
+    temperatureJson[0].units = "F";
     temperatureJson[0].humidity = data["main"].humidity;
     temperatureJson[0].windDirection = data["wind"].deg;
     temperatureJson[0].windUnits = "mph";
@@ -212,20 +212,20 @@ function storeTemperature(data) {
     setTemperature();
 }
 function setTemperature() {
-    if (current_unit == "metric"&&temperatureJson[0].units=="&deg;F") {
+    if (current_unit == "metric"&&temperatureJson[0].units=="F") {
         temperatureJson[0].realFeel = toCelsius(temperatureJson[0].realFeel);
         temperatureJson[0].min = toCelsius(temperatureJson[0].min);
         temperatureJson[0].max = toCelsius(temperatureJson[0].max);
         temperatureJson[0].wind = toKph(temperatureJson[0].wind);
-        temperatureJson[0].units = "&deg;C";
+        temperatureJson[0].units = "C";
         temperatureJson[0].windUnits = "Km/hr";
     }
-    else if (current_unit == "imperial" && temperatureJson[0].units == "&deg;C") {
+    else if (current_unit == "imperial" && temperatureJson[0].units == "C") {
         temperatureJson[0].realFeel = toFarenheit(temperatureJson[0].realFeel);
         temperatureJson[0].min = toFarenheit(temperatureJson[0].min);
         temperatureJson[0].max = toFarenheit(temperatureJson[0].max);
         temperatureJson[0].wind = toMph(temperatureJson[0].wind);
-        temperatureJson[0].units = "&deg;F";
+        temperatureJson[0].units = "F";
         temperatureJson[0].windUnits = "mph";
     }
     else {
@@ -233,7 +233,7 @@ function setTemperature() {
     }
     /*main temperature timeline*/
     var temperatureMainText = "<div class='city-name'>" + current_city+ "</div>";
-    temperatureMainText += "<div class='city-country'>" + temperatureJson[0].country + "</div><div class='temperature-value'>" + temperatureJson[0].realFeel + "<span class='temperature-unit'>" + temperatureJson[0].units + "</span></div>";
+    temperatureMainText += "<div class='city-country'>" + temperatureJson[0].country + "</div><div class='temperature-value'>" + temperatureJson[0].realFeel + "&deg; <span class='temperature-unit'>" + temperatureJson[0].units + "</span></div>";
     temperatureMainText += "<div class='weather-description'>" + temperatureJson[0].description + "</div>";
     document.getElementById('temperatureMain').innerHTML = "" + temperatureMainText;
     document.getElementById("temperatureMain").style.background = "url('../images/" + temperatureJson[0].code.toString().toLowerCase() + "Timeline.jpe')  no-repeat scroll center center";
@@ -244,7 +244,7 @@ function setTemperature() {
     document.getElementById('wind').innerHTML = "" + windText;
     $(".wind-direction>img").css("transform", "rotate(" + temperatureJson[0].windDirection + "deg)");
     /*min max*/
-    var minmaxText = "<h2>Min </h2><div class='temperature-unit'>" + temperatureJson[0].min + " " + temperatureJson[0].units + "</div><h2>Max </h2><div class='temperature-unit'>" + temperatureJson[0].max + " " + temperatureJson[0].units + "</div>";
+    var minmaxText = "<h2>Min | " + temperatureJson[0].min + "&deg; " + temperatureJson[0].units + "</h2><h2>Max | " + temperatureJson[0].max + "&deg; " + temperatureJson[0].units + "</h2>";
     document.getElementById('minMax').innerHTML = "" + minmaxText;
     /*humidity*/
     loadHumidityGauge(temperatureJson[0].humidity);

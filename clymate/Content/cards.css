@@ -109,6 +109,11 @@ input[type=text]#locationTextBox {
 #sunrise {
   background: url("../images/sunrise.jpe") no-repeat scroll center center rgba(134, 134, 134, 0.7); }
 
+#minMax h2 {
+  font-size: 50px;
+  padding-top: 20px;
+  margin-left: 10px; }
+
 #customGraphics {
   display: block;
   min-height: 250px; }

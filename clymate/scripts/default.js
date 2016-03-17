@@ -26,6 +26,7 @@ var temperatureJson = [
 var uvFacts = [
     { uvRadiation: "Low", spf: "Mild sunscreen is advised its a bright day though not required", shield: "No specific clothing is advised at low levels of UV index. However, its recommended to wear shades or hats for protection", shade: "Seek shade if its a bright day or if you have particularly fair skin", exposure: "Avoid being under the sun is it strong" },
     { uvRadiation: "Medium", spf: "Wearing a sunscreen is recommended", shield: "Wear clothes that cover your body and provide protection from the sun", shade: "Seek shade during noon hours when the sun is the strongest", exposure: "Avoid long exposures under the sun without any protection" },
+    { uvRadiation: "Moderate", spf: "Wearing a sunscreen is recommended", shield: "Wear clothes that cover your body and provide protection from the sun", shade: "Seek shade during noon hours when the sun is the strongest", exposure: "Avoid long exposures under the sun without any protection" },
     { uvRadiation: "High", spf: "Wearing 30+ SPF sunscreen is highly recommended", shield: "Wear clothes that provide protection against sun coupled with a headgear and shades", shade: "Avoid long exposure under sun and seek shade whenever possible", exposure: "Avoid exposures under the sun especially during noon time when the sun is the strongest" },
     { uvRadiation: "Very high", spf: "Wear 30+ SPF sunscreen and reapply after every two hours", shield: "Wear clothes that provide protection against sun coupled with a headgear and shades", shade: "Avoid long exposure under sun and seek shade whenever possible", exposure: "Avoid exposure under sun within three hours of solar noon" },
     { uvRadiation: "Extreme", spf: "Wear 30+ SPF sunscreen and reapply after every two hours", shield: "Wear clothes that cover you up entirely and a wide brimmed hat and shades. UV protective clothing is recommended", shade: "Seek shade whenever possible and avoid long exposure to sun", exposure: "Avoid being under the sun for more than ten minutes at a stretch and avoid outdoors within three hours of solar noon" }
@@ -129,9 +130,9 @@ function initializeHumidityGauge() {
                 value: ['Humidity']
             },
             type: 'gauge',
-            onclick: function (d, i) { /*console.log("onclick", d, i);*/ },
-            onmouseover: function (d, i) { /*console.log("onmouseover", d, i);*/ },
-            onmouseout: function (d, i) {/* console.log("onmouseout", d, i); */ }
+            onclick: function (d, i) { /*////console.log("onclick", d, i);*/ },
+            onmouseover: function (d, i) { /*////console.log("onmouseover", d, i);*/ },
+            onmouseout: function (d, i) {/* ////console.log("onmouseout", d, i); */ }
         },
         gauge: {
             label: {
@@ -255,7 +256,7 @@ function setTemperature() {
     document.getElementById('sunset').innerHTML = "" + sunsetText;
     /**/
     $(".current-location").text("" + current_city + ", " + temperatureJson[0].country);
-    console.log(temperatureJson[0].country);
+    ////console.log(temperatureJson[0].country);
 }
 function loadHumidityGauge(input) {
     //$(window).stopImmediatePropagation();
@@ -275,27 +276,34 @@ function calculateTime(weirdTime) {
     return d;
 }
 function setUV(data) {
-    console.log(data);
-    console.log(data.data.weather[0].uvIndex);
-    console.log("uv country test "+temperatureJson[0].country);
+    ////console.log(data);
+    ////console.log(data.data.weather[0].uvIndex);
+    ////console.log("uv country test "+temperatureJson[0].country);
     var uvText = "<div class='row'><div class='col-md-10 col-xs-12'><div class='city-name'>" + current_city + "</div>";
     uvText += "<div class='city-country'>" + temperatureJson[0].country + "</div>";
     uvText += "<div class='city-country'>UV intensity:  " + defineUvIndex(data.data.weather[0].uvIndex) + "</div></div>";
     uvText += "<div class='col-md-2 col-xs-12 text-center'><div class='temperature-value uv-index'>" + data.data.weather[0].uvIndex + "</div></div></div>";
     document.getElementById('uvMain').innerHTML = "" + uvText;
     var localUvData = translateUvData(defineUvIndex(data.data.weather[0].uvIndex));
+    ////console.log("*1 " + data.data.weather[0].uvIndex);
+    //console.log("*2 " + defineUvIndex(data.data.weather[0].uvIndex));
+    //console.log("*3 " + translateUvData(defineUvIndex(data.data.weather[0].uvIndex)));
+    //console.log("*4 " + localUvData);
     document.getElementById('spf').innerHTML = localUvData.spf;
     document.getElementById('shield').innerHTML = localUvData.shield;
     document.getElementById('shade').innerHTML = localUvData.shade;
     document.getElementById('exposure').innerHTML = localUvData.exposure;
-    console.log("before refresh");
+    //console.log("before refresh");
     // auto refresh
     if(current_refresh_flag==true)
         setTimeout(getTemperatureAndUv, current_refresh);
 }
-function translateUvData(input){
+function translateUvData(input) {
+    //console.log("*inside " + input);
+    //console.log(uvFacts);
     for (var i = 0; i < uvFacts.length; i++) {
         if(uvFacts[i].uvRadiation==input){
+            //console.log(uvFacts[i]);
             return uvFacts[i];
         }
     }
@@ -343,7 +351,7 @@ var weatherModule = (function () {
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "http://api.openweathermap.org/data/2.5/weather?q=" + current_city + "&units=imperial&appid=2de143494c0b295cca9337e1e96b00e0",
+                url: "http://api.openweathermap.org/data/2.5/weather?q=" + current_city + "&units=imperial&appid=d3a0d61158c09a1b15e84fb055e8e077",
                 success: function (data) {
                     if (data["cod"] == 200)
                         callback(data);
@@ -360,7 +368,7 @@ var locationModule = (function () {
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "http://api.openweathermap.org/data/2.5/weather?q=" + input + "&units=imperial&appid=2de143494c0b295cca9337e1e96b00e0",
+                url: "http://api.openweathermap.org/data/2.5/weather?q=" + input + "&units=imperial&appid=d3a0d61158c09a1b15e84fb055e8e077",
                 success: function (data) {
                     if (data["cod"] == 200)
                     { anotherTest(true,input);}
